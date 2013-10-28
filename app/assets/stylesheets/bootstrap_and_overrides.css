@@ -1,0 +1,106 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+  body {
+  	padding-top: 40px;
+  	padding-bottom: 40px;
+  	background-image: url(data:image/gif;base64,R0lGODlhCAAGAKIAAPHx8fDw8Ozs7O7u7u3t7e/v7wAAAAAAACH5BAAAAAAALAAAAAAIAAYAAAMXSDIlpKGUR6IkTM4yCPcFgGViIDhPkAAAOw==);
+  	color: #333;
+  	font-family: 'source sans pro', 'sans-serif';
+  }
+
+  h1.heading {
+  	margin: 0 auto;
+  	text-align: center;
+  	color: #003e6a;
+  }
+
+  .container {
+  	/*width: 1280px;*/
+  }
+
+  .form-signin {
+  	max-width: 300px;
+  	padding: 19px 29px 29px;
+  	margin: 40px auto 20px;
+  	background-color: #fff;
+  	border: 1px solid #e5e5e5;
+  	-webkit-border-radius: 5px;
+  	-moz-border-radius: 5px;
+  	border-radius: 5px;
+  	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  	box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+
+  .dark {
+  	background-color: #dbdbdb;
+  	padding: 2px 10px;
+  	text-align: center;
+  	margin-top: 0;
+  	border: 1px solid #ababab;
+  }
+
+
+  .form-fields .row-fluid {
+  	margin-bottom: 10px;
+  }
+
+  .modal {
+  	width: 400px;
+  	margin-left: -120px;
+  }
+
+  .modal-body {
+  	overflow: hidden;
+  }  
+  .form-fields .row-fluid .span6 label {
+  	background-color: #ebebeb;
+  	border: 1px solid #ababab;
+  	padding: 5px 10px;
+  	text-align: left;
+  }
+
+  td.editable {
+  	background-color: #FFE000 !important;
+  	cursor: pointer;
+  }
+
+  td.editable a { 
+  	color: #444;
+  	width: 100%;
+  	display: block;
+  }
+
+  td.editable a:hover { 
+  	text-decoration: none;
+  }
+
+  /* PARSLEY CSS FOR FORM VALIDATIONS */
+  input.parsley-success, textarea.parsley-success, select.parsley-success {
+  	background-color: #DFF0D8 !important;
+  	border: 1px solid #D6E9C6 !important;
+  }
+  .field_with_errors input, .field_with_errors textarea, .field_with_errors select, 
+  input.parsley-error, textarea.parsley-error, select.parsley-error {
+  	background-color: #F2DEDE !important;
+  	border: 1px solid #EED3D7 !important;
+  }
+  input.parsley-success, textarea.parsley-success { color: #468847 !important; }
+  input.parsley-error, textarea.parsley-error { color: #B94A48 !important; }
+
+  ul.parsley-error-list {
+  	font-size: 11px;
+  	margin: 2px;
+  	list-style-type:none;
+  }
+  ul.parsley-error-list li {
+  	line-height: 11px;
+  	color: #BB272F;
+  }
+

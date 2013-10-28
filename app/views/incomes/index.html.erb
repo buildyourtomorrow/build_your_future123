@@ -1,0 +1,90 @@
+
+<div class="row-fluid">
+  <div class="span3">
+    <a href="#addIncome" role="button" class="btn btn-large btn-block" data-toggle="modal">Add Income</a>
+  </div>
+  <div class="span7">
+    <h2 class="dark">Income</h2>
+    <% if @incomes.blank? %>
+    <p>Currently you have not added your income details. You can add by clicking the link below</p>
+
+    <div class="row-fluid">
+      <!-- <div class="span4 offset4"> -->
+      <a href="#addIncome" role="button" class="btn btn-danger btn-block" data-toggle="modal">Add Income</a>
+      <!-- </div> -->
+    </div>
+    <% else %>
+    <% [2, 1, 0, -1, -2].each do |t| %>
+    <% month = Date::MONTHNAMES[(Date.today+t.months).month] %>
+    <% year = (Date.today+t.months).year %>
+    <h2 class="dark">
+      <%= "#{month} #{year}" %>
+      <%= raw " <small>(current month)" if t == 0 %>
+    </h2>
+    <table class="table table-bordered table-striped">
+      <tbody>
+        <% if @incomes.frequency == Income::WEEKLY %>
+        <% (Date.today+t.months).week_split.each do |week| %>
+        <% next if week[0].blank? %>
+        <tr>
+          <td class="editable"><a href="#updateIncome" role="button" data-toggle="modal">Paycheck</a></td>
+          <td align="center"><%= "$#{@incomes.amount}" %></td>
+          <td align="center"><%= "#{(Date.today+t.months).month}/#{week[0]}" %></td>
+        </tr>
+        <% end %>
+        <% elsif @incomes.frequency == Income::OTHER_WEEK %>
+        <% index = 0 %>
+        <% (Date.today+t.months).week_split.each do |week| %>
+        <% next if week[0].blank? %>
+        <% if index%2 == 0 %>
+        <tr>
+          <td class="editable"><a href="#updateIncome" role="button" data-toggle="modal">Paycheck</a></td>
+          <td align="center"><%= "$#{@incomes.amount}" %></td>
+          <td align="center"><%= "#{(Date.today+t.months).month}/#{week[0]}" %></td>
+        </tr>
+        <% end %>
+        <% index += 1 %>
+        <% end %>
+        <% elsif @incomes.frequency == Income::TWICE_MONTH %>
+        <tr>
+          <td class="editable"><a href="#updateIncome" role="button" data-toggle="modal">Paycheck</a></td>
+          <td align="center"><%= "$#{@incomes.amount}" %></td>
+          <td align="center"><%= "#{(Date.today+t.months).month}/15" %></td>
+        </tr>
+        <tr>
+          <td class="editable"><a href="#updateIncome" role="button" data-toggle="modal">Paycheck</a></td>
+          <td align="center"><%= "$#{@incomes.amount}" %></td>
+          <td align="center"><%= "#{(Date.today+t.months).month}/#{(Date.today+t.months).week_split.last.last rescue "30"}" %></td>
+        </tr>
+        <% elsif @incomes.frequency == Income::MONTHLY %>
+        <tr>
+          <td class="editable"><a href="#updateIncome" role="button" data-toggle="modal">Paycheck</a></td>
+          <td align="center"><%= "$#{@incomes.amount}" %></td>
+          <td align="center"><%= "#{(Date.today+t.months).month}/1" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+<% unless @incomes.blank? %>
+<div id="updateIncome" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Update Income</h3>
+  </div>
+  <%= render :partial => 'form', :locals => {:income => @incomes} %>
+</div>
+<% end %>
+
+<div id="addIncome" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Add Income</h3>
+  </div>
+  <%= render :partial => 'form', :locals => {:income => @income} %>
+</div>

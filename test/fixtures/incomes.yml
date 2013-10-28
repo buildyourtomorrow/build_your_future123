@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  amount: 1
+  frequency: 1
+  start_date: 2013-10-27
+  savings: 1
+  description: MyString
+
+two:
+  amount: 1
+  frequency: 1
+  start_date: 2013-10-27
+  savings: 1
+  description: MyString
